@@ -41,7 +41,7 @@ def main():
             y_pred.extend(torch.argmax(model(b),dim=1).cpu().numpy())
             
     y_ = ['female' if x==0 else 'male' for x in y_pred]
-    gloss = dict(zip(os.listdir('C:/Users/olyas/Desktop/Man_Woman'), list(y_)))
+    gloss = dict(zip(os.listdir(path_image), list(y_)))
 
 
     npencoder = Utils.NpEncoder
