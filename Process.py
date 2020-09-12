@@ -12,8 +12,8 @@ import argparse
 
 ap = argparse.ArgumentParser(description='Predict.py')
 
-ap.add_argument('input', default='C:/Users/olyas/Desktop/Man_Woman', nargs='?', action="store", type = str)
-ap.add_argument('checkpoint', default='C:/Users/olyas/Desktop/Ntechlab_transf_arx.pth', nargs='?', action="store", type = str)
+ap.add_argument('--input', default='C:/Users/olyas/Desktop/Man_Woman', nargs='?', action="store", type = str)
+ap.add_argument('--checkpoint', default='C:/Users/olyas/Desktop/Best_mobnet111.pth', nargs='?', action="store", type = str)
 
 
 pa = ap.parse_args()
@@ -23,7 +23,7 @@ path_model = pa.checkpoint
 
 def main():
     
-    model = Utils.Transfer_Res()
+    model = Utils.CNNClassifier()
     model.load_state_dict(torch.load(path_model, map_location=torch.device('cpu')))
     model.eval()
 
@@ -51,6 +51,7 @@ def main():
     with open(filepath, 'w') as file:
         file.write(json_txt)
 
+    print(gloss)    
     print('Done!')    
     
     
